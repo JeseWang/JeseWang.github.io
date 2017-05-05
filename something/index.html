@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+<link rel="stylesheet" type="text/css" href="./bootstrap.min.css">
+<style>
+    html,body{height: 100%;}
+    *{font-size: 13px;}
+    .shell{ height: 100%;display:-webkit-flex; display: flex;flex-direction: column; }
+    .header{padding: 10px 0 0;}
+    .header input{margin-bottom: 10px;width:50px;height: 15px;}
+    .search{display:-webkit-flex;display:flex;justify-content: space-around;}
+    .search button{width: 50px;height:50px;background:#4385F5;color: #fff;border:none;border-radius: 5px;}
+    .table-responsive{margin:0;}
+    #t_r_title,#t_r_footer{width: 100%;overflow:hidden;}
+    .content{height:100%;overflow: hidden;display: -webkit-flex; display: flex;}
+    .content table td{font-size: 10px}
+    .left,.right{display: -webkit-flex; display: flex; flex-direction: column; }
+    .t-header,.t-footer{height: 60px;}
+    .t-header table,.t-footer table{height: 100%;}
+    /*.t-header th,.t-footer th{vertical-align:top!important;}*/
+    .right .t-body{overflow: scroll;}
+    table{table-layout: fixed;}
+    .left table{width: 50px;}
+    .left table th,.left table td{text-align: center;}
+    .right table th,.right table td{width: 120px;overflow: hidden;text-overflow: ellipsis;text-align: center;}
+</style>
+<script>
+    function eScroll(){
+        var a=document.getElementById("t_r_content").scrollTop; 
+        var b=document.getElementById("t_r_content").scrollLeft; 
+        document.getElementById("t_l_content").scrollTop=a; 
+        document.getElementById("t_r_title").scrollLeft=b; 
+        document.getElementById("t_r_footer").scrollLeft=b; 
+    }
+</script>
+</head>
+<body>
+<div class="shell">
+    <div class="header">
+            <div class="search">
+                <div>
+                    宽：<input type="text" name="width" value=""><br>
+                    高：<input type="text" name="height" value="">
+                </div>
+                <div>
+                    <span style="margin-right: 2em">公</span>差：<input type="text" name="errand" value=""><br>
+                    楼层编号：<input type="text" name="num" value="">
+                </div>
+                <div>
+                    <button type="button" onclick="search()">搜索</button>
+                </div>
+            </div>
+        </div>
+    <div class="content">
+        <div class="left">
+            <div class="table-responsive t-header">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>序 号</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-responsive t-body" id="t_l_content">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-responsive t-footer">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>合计</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="right" style="overflow: hidden;">
+            <div class="table-responsive t-header" id="t_r_title">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>一二三四五六七八九十一二三四五六七八九十</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-responsive t-body" id="t_r_content" onscroll="eScroll()">
+                <table class="table table-bordered">
+                	<tr>
+                		<td>一二三四五六七八九十一二三四五六七八九十</td>
+                		<td>This is tdThis is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                    <tr>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                        <td>This is td</td>
+                    </tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                	<tr>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                		<td>This is td</td>
+                	</tr>
+                </table>
+            </div>
+            <div class="table-responsive t-footer" id="t_r_footer">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                        <th>This is tr</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
