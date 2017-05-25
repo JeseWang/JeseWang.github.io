@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="node,mongoodb," />
+  <meta name="keywords" content="node,mongodb," />
 
 
 
@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/25/mongodb-mongoose/index.html">
 <meta property="og:site_name" content="Jesse">
 <meta property="og:description" content="一直以来对数据库的概念总是很模糊，于是花了一周的时间集中学习mongodb数据库，了解了数据库的基本部署，配置和操作，终于可以顺利的把mongodb运行在Mac，Window和Linux中了，同时对Linux也更深入了一个层次，而再次使用mongoose作为中间件来操作mongodb时，也有了很多新的认识……">
-<meta property="og:updated_time" content="2017-05-25T10:45:15.742Z">
+<meta property="og:updated_time" content="2017-05-25T11:08:06.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习mongodb之mongoose">
 <meta name="twitter:description" content="一直以来对数据库的概念总是很模糊，于是花了一周的时间集中学习mongodb数据库，了解了数据库的基本部署，配置和操作，终于可以顺利的把mongodb运行在Mac，Window和Linux中了，同时对Linux也更深入了一个层次，而再次使用mongoose作为中间件来操作mongodb时，也有了很多新的认识……">
@@ -328,7 +328,7 @@
 <p>也就是model()的第三个参数，也可以这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var newSchema = new Schema(&#123;</div><div class="line">    ...</div><div class="line">&#125;,&#123;</div><div class="line">    collection: &quot;collectionName&quot;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>即Schema({},{})的第二个参数，既然是这样，我就猜想，从指定的数据库中取数据应该可以用同样的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mongoose.model(&apos;User&apos;,new Schema(),&apos;collectionName&apos;)</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">User.find(function(err, res)&#123;</div><div class="line">    console.log(res)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">......</div></pre></td></tr></table></figure></p>
 <p>果然，将刚才定义的第三个参数集合下所有的数据打印了出来！</p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>关于mongoose的操作还有很多，比如update,remove,findOne等等等等，还有索引什么的，其实，只要对<code>mongoodb</code>数据库的知识有一个全面的了解和基本的掌握，理解<code>mongoose</code>还是很简单的，具体的操作和方法，多看看官方的文档，很快就能掌握，加油，共勉！</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>关于mongoose的操作还有很多，比如update,remove,findOne等等等等，还有索引什么的，其实，只要对<code>mongodb</code>数据库的知识有一个全面的了解和基本的掌握，理解<code>mongoose</code>还是很简单的，具体的操作和方法，多看看官方的文档，很快就能掌握，加油，共勉！</p>
 
       
     </div>
@@ -352,7 +352,7 @@
           
             <a href="/tags/node/" rel="tag">#node</a>
           
-            <a href="/tags/mongoodb/" rel="tag">#mongoodb</a>
+            <a href="/tags/mongodb/" rel="tag">#mongodb</a>
           
         </div>
       
