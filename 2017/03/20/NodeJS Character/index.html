@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,table," />
+  <meta name="keywords" content="node," />
 
 
 
@@ -90,18 +90,16 @@
 
 
 
-<meta name="description" content="最近在做手机端的web时有一个需求，需要实现table表格的首行和首列固定，虽然这是个很简单也很经典的一个问题，但关键是要保证在手机端浏览拥有大量数据的表格，而且表头表尾和首列在固定的前提下还要跟随滑动，我第一个想法就是网上找一个处理类似问题的第三方插件，但想了想，仅仅为了这一个页面而引用插件甚至一个库，本来展示的数据量就比较大，再加上插件，有点儿得不偿失，算了，看能不能用最简单的方法把问题给解决">
+<meta name="description" content="使用NodeJS编写前端工具时，操作得最多的是文本文件，因此也就涉及到了文件编码的处理问题。我们常用的文本编码有UTF8和GBK两种，并且UTF8文件还可能带有BOM。在读取不同编码的文本文件时，需要将文件内容转换为JS使用的UTF8编码字符串后才能正常处理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Table表格表头首列固定">
-<meta property="og:url" content="http://yoursite.com/2017/03/02/Table表格表头首列固定/index.html">
+<meta property="og:title" content="NodeJS之字符编码">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/NodeJS Character/index.html">
 <meta property="og:site_name" content="Jesse">
-<meta property="og:description" content="最近在做手机端的web时有一个需求，需要实现table表格的首行和首列固定，虽然这是个很简单也很经典的一个问题，但关键是要保证在手机端浏览拥有大量数据的表格，而且表头表尾和首列在固定的前提下还要跟随滑动，我第一个想法就是网上找一个处理类似问题的第三方插件，但想了想，仅仅为了这一个页面而引用插件甚至一个库，本来展示的数据量就比较大，再加上插件，有点儿得不偿失，算了，看能不能用最简单的方法把问题给解决">
-<meta property="og:image" content="http://yoursite.com/something/table.gif">
-<meta property="og:updated_time" content="2017-05-05T01:04:27.513Z">
+<meta property="og:description" content="使用NodeJS编写前端工具时，操作得最多的是文本文件，因此也就涉及到了文件编码的处理问题。我们常用的文本编码有UTF8和GBK两种，并且UTF8文件还可能带有BOM。在读取不同编码的文本文件时，需要将文件内容转换为JS使用的UTF8编码字符串后才能正常处理。">
+<meta property="og:updated_time" content="2017-05-05T01:04:27.511Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Table表格表头首列固定">
-<meta name="twitter:description" content="最近在做手机端的web时有一个需求，需要实现table表格的首行和首列固定，虽然这是个很简单也很经典的一个问题，但关键是要保证在手机端浏览拥有大量数据的表格，而且表头表尾和首列在固定的前提下还要跟随滑动，我第一个想法就是网上找一个处理类似问题的第三方插件，但想了想，仅仅为了这一个页面而引用插件甚至一个库，本来展示的数据量就比较大，再加上插件，有点儿得不偿失，算了，看能不能用最简单的方法把问题给解决">
-<meta name="twitter:image" content="http://yoursite.com/something/table.gif">
+<meta name="twitter:title" content="NodeJS之字符编码">
+<meta name="twitter:description" content="使用NodeJS编写前端工具时，操作得最多的是文本文件，因此也就涉及到了文件编码的处理问题。我们常用的文本编码有UTF8和GBK两种，并且UTF8文件还可能带有BOM。在读取不同编码的文本文件时，需要将文件内容转换为JS使用的UTF8编码字符串后才能正常处理。">
 
 
 
@@ -119,7 +117,7 @@
   };
 </script>
 
-  <title> Table表格表头首列固定 | Jesse </title>
+  <title> NodeJS之字符编码 | Jesse </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -249,7 +247,7 @@
             
             
               
-                Table表格表头首列固定
+                NodeJS之字符编码
               
             
           </h1>
@@ -261,8 +259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-02T22:46:09+08:00" content="2017-03-02">
-              2017-03-02
+            <time itemprop="dateCreated" datetime="2017-03-20T16:49:02+08:00" content="2017-03-20">
+              2017-03-20
             </time>
           </span>
 
@@ -308,14 +306,16 @@
       
 
       
-        <p>最近在做手机端的web时有一个需求，需要实现table表格的首行和首列固定，虽然这是个很简单也很经典的一个问题，但关键是要保证在手机端浏览拥有大量数据的表格，而且表头表尾和首列在固定的前提下还要跟随滑动，我第一个想法就是网上找一个处理类似问题的第三方插件，但想了想，仅仅为了这一个页面而引用插件甚至一个库，本来展示的数据量就比较大，再加上插件，有点儿得不偿失，算了，看能不能用最简单的方法把问题给解决了，于是就有了下面的内容……<br><a id="more"></a><br>首先展示最终的效果：<br><img src="/something/table.gif" alt="table"></p>
-<ol>
-<li>首先，为了表格的展现方便，引用了bootstrap的table.less样式，自己写也可以，不用用gulp压缩一下也就不到8kb，大小还能接受</li>
-<li>整个表格分为两部分，固定的首列和展示数据的右侧，而左右内容有分为三列，固定的表头表尾，和中间可以滑动的数据部分</li>
-<li>首行和首列的跟随滑动是简单的通过js监听各部分的scoll实现的</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;content&quot;&gt;</div><div class="line">	&lt;div class=&quot;left&quot;&gt;</div><div class="line">		&lt;div class=&quot;table-responsive t-header&quot;&gt;</div><div class="line">			&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;table-responsive t-body&quot; id=&quot;t_l_content&quot;&gt;</div><div class="line">			&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;table-responsive t-footer&quot;&gt;</div><div class="line">			&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;div class=&quot;right&quot;&gt;</div><div class="line">		&lt;div class=&quot;table-responsive t-header&quot; id=&quot;t_r_title&quot;&gt;</div><div class="line">			&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;table-responsive t-body&quot; id=&quot;t_r_content&quot; onscroll=&quot;scrollCtrl()&quot;&gt;</div><div class="line">			&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;table-responsive t-footer&quot; id=&quot;t_r_footer&quot;&gt;</div><div class="line">			&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function scrollCtrl()&#123;</div><div class="line">    var top = document.getElementById(&quot;t_r_content&quot;).scrollTop; </div><div class="line">    var left = document.getElementById(&quot;t_r_content&quot;).scrollLeft; </div><div class="line">    document.getElementById(&quot;t_l_content&quot;).scrollTop=top; </div><div class="line">    document.getElementById(&quot;t_r_title&quot;).scrollLeft=left; </div><div class="line">    document.getElementById(&quot;t_r_footer&quot;).scrollLeft=left; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>使用NodeJS编写前端工具时，操作得最多的是文本文件，因此也就涉及到了文件编码的处理问题。我们常用的文本编码有UTF8和GBK两种，并且UTF8文件还可能带有BOM。在读取不同编码的文本文件时，需要将文件内容转换为JS使用的UTF8编码字符串后才能正常处理。<br><a id="more"></a></p>
+<h4 id="BOM的移除"><a href="#BOM的移除" class="headerlink" title="BOM的移除"></a>BOM的移除</h4><p>BOM用于标记一个文本文件使用Unicode编码，其本身是一个Unicode字符（”\uFEFF”），位于文本文件头部。在不同的Unicode编码下，BOM字符对应的二进制字节如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    Bytes      Encoding</div><div class="line">----------------------------</div><div class="line">    FE FF       UTF16BE</div><div class="line">    FF FE       UTF16LE</div><div class="line">    EF BB BF    UTF8</div></pre></td></tr></table></figure></p>
+<p>因此，我们可以根据文本文件头几个字节等于啥来判断文件是否包含BOM，以及使用哪种Unicode编码。但是，BOM字符虽然起到了标记文件编码的作用，其本身却不属于文件内容的一部分，如果读取文本文件时不去掉BOM，在某些使用场景下就会有问题。例如我们把几个JS文件合并成一个文件后，如果文件中间含有BOM字符，就会导致浏览器JS语法错误。因此，使用NodeJS读取文本文件时，一般需要去掉BOM。例如，以下代码实现了识别和去除UTF8 BOM的功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function readText(pathname)&#123;</div><div class="line">	var bin = fs.readFileSync(pahtname)</div><div class="line"></div><div class="line">	if(bin[0] === 0xEF &amp;&amp; bin[1] === 0xBB &amp;&amp; bin[2] === 0xBF)&#123;</div><div class="line">		bin = bin.slice(3)</div><div class="line">	&#125;</div><div class="line">	return bin.toString(&apos;utf-8&apos;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="GBK转UTF8"><a href="#GBK转UTF8" class="headerlink" title="GBK转UTF8"></a>GBK转UTF8</h4><p>NodeJS支持在读取文本文件时，或者在Buffer转换为字符串时指定文本编码，但遗憾的是，GBK编码不在NodeJS自身支持范围内。因此，一般我们借助iconv-lite这个三方包来转换编码。使用NPM下载该包后，我们可以按下边方式编写一个读取GBK文本文件的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var iconv = require(&apos;iconv-lite&apos;);</div><div class="line"></div><div class="line">function readGBKText(pathname) &#123;</div><div class="line">    var bin = fs.readFileSync(pathname);</div><div class="line"></div><div class="line">    return iconv.decode(bin, &apos;gbk&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="单字节编码"><a href="#单字节编码" class="headerlink" title="单字节编码"></a>单字节编码</h4><p>有时候，我们无法预知需要读取的文件采用哪种编码，因此也就无法指定正确的编码。比如我们要处理的某些CSS文件中，有的用GBK编码，有的用UTF8编码。虽然可以一定程度可以根据文件的字节内容猜测出文本编码，但这里要介绍的是有些局限，但是要简单得多的一种技术。</p>
+<p>首先我们知道，如果一个文本文件只包含英文字符，比如Hello World，那无论用GBK编码或是UTF8编码读取这个文件都是没问题的。这是因为在这些编码下，ASCII0~128范围内字符都使用相同的单字节编码。</p>
+<p>反过来讲，即使一个文本文件中有中文等字符，如果我们需要处理的字符仅在ASCII0~128范围内，比如除了注释和字符串以外的JS代码，我们就可以统一使用单字节编码来读取文件，不用关心文件的实际编码是GBK还是UTF8。以下示例说明了这种方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">1. GBK编码源文件内容：</div><div class="line">    var foo = &apos;中文&apos;;</div><div class="line">2. 对应字节：</div><div class="line">    76 61 72 20 66 6F 6F 20 3D 20 27 D6 D0 CE C4 27 3B</div><div class="line">3. 使用单字节编码读取后得到的内容：</div><div class="line">    var foo = &apos;&#123;乱码&#125;&#123;乱码&#125;&#123;乱码&#125;&#123;乱码&#125;&apos;;</div><div class="line">4. 替换内容：</div><div class="line">    var bar = &apos;&#123;乱码&#125;&#123;乱码&#125;&#123;乱码&#125;&#123;乱码&#125;&apos;;</div><div class="line">5. 使用单字节编码保存后对应字节：</div><div class="line">    76 61 72 20 62 61 72 20 3D 20 27 D6 D0 CE C4 27 3B</div><div class="line">6. 使用GBK编码读取后得到内容：</div><div class="line">    var bar = &apos;中文&apos;;</div></pre></td></tr></table></figure></p>
+<p>这里的诀窍在于，不管大于0xEF的单个字节在单字节编码下被解析成什么乱码字符，使用同样的单字节编码保存这些乱码字符时，背后对应的字节保持不变。</p>
+<p>NodeJS中自带了一种binary编码可以用来实现这个方法，因此在下例中，我们使用这种编码来演示上例对应的代码该怎么写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function replace(pathname) &#123;</div><div class="line">    var str = fs.readFileSync(pathname, &apos;binary&apos;);</div><div class="line">    str = str.replace(&apos;foo&apos;, &apos;bar&apos;);</div><div class="line">    fs.writeFileSync(pathname, str, &apos;binary&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>内容摘自<a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">http://nqdeng.github.io/7-days-nodejs/</a></p>
 
       
     </div>
@@ -337,9 +337,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag">#javascript</a>
-          
-            <a href="/tags/table/" rel="tag">#table</a>
+            <a href="/tags/node/" rel="tag">#node</a>
           
         </div>
       
@@ -348,16 +346,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/28/2017-努力向前/" rel="next" title="2017,努力向前">
-                <i class="fa fa-chevron-left"></i> 2017,努力向前
+              <a href="/2017/03/02/about table/" rel="next" title="Table表格表头首列固定">
+                <i class="fa fa-chevron-left"></i> Table表格表头首列固定
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/20/NodeJS之字符编码/" rel="prev" title="NodeJS之字符编码">
-                NodeJS之字符编码 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/03/go to Vue2.0/" rel="prev" title="走向Vue2.0">
+                走向Vue2.0 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -426,7 +424,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -443,7 +441,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -501,7 +499,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#BOM的移除"><span class="nav-number">1.</span> <span class="nav-text">BOM的移除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GBK转UTF8"><span class="nav-number">2.</span> <span class="nav-text">GBK转UTF8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单字节编码"><span class="nav-number">3.</span> <span class="nav-text">单字节编码</span></a></li></ol></div>
             
           </div>
         </section>
